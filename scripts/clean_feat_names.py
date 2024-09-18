@@ -1,9 +1,11 @@
 # feature name clean
 # e.g., EducationField -> education field, SENDER_ACCOUNT_ID -> sender account id
 # standardize the feature texts for correct tokenization by Tokenizer
+# execusion dir = '~/tp-berta/scripts'
 import os
 import sys
 sys.path.append(os.getcwd())
+sys.path.append('../../tp-berta/') # add
 import json
 import pandas as pd
 

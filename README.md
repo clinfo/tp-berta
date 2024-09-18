@@ -30,21 +30,22 @@ The repo structure and module functions are as follows:
 │ ├─data.py -------------- // Dataset & Data Transformation class
 │ ├─data_utils.py -------- // Data Config & Multi-task Loader class
 │ └─xxx.py --------------- // Other standard utils
-├─data --- // csv file path for pre-training & fine-tuning
-│ ├─pretrain-bin
-│ ├─pretrain-reg
-│ ├─finetune-bin
-│ ├─finetune-reg
-│ └─finetune-mul
+│
 ├─checkpoints --- // Pre-trained model weights & configs (RoBERTa, TP-BERTa)
 ├─configs --- // Model & Training configs for non-LM baselines
 │ ├─default --- // default configs
 │ └─tuned ----- // tuned configs (generated with hyperparameter tuning scripts)
 ├─scripts --- // Experiment codes
+│ ├─data --- // feature_names.json and csv file path for pre-training & fine-tuning
+│ │ ├─pretrain-bin
+│ │ ├─pretrain-reg
+│ │ ├─finetune-bin
+│ │ ├─finetune-reg
+│ │ └─finetune-mul
 │ ├─examples --- // Example shell scripts for main experiments
 │ ├─pretrain --- // Codes for TP-BERTa pre-training
 │ ├─finetune --- // Codes for baseline fine-tuning & hyperparameter tuning
-│ └─clean_feat_names.py --- // Text clean for table feature names
+│ └─clean_feat_names.py --- // Text clean for table feature names (making for feature_names.json)
 ```
 
 ## Dependencies
@@ -54,6 +55,12 @@ All necessary dependencies for TP-BERTa are included in `requirement.txt`. To co
 ### How to pre-train a TP-BERTa from scratch
 
 In experiment we saved weights and configs of [RoBERTa-base](https://huggingface.co/FacebookAI/roberta-base/tree/main) in the local `checkpoints/roberta-base` folder (network unavailable) and conducted pre-training with `scripts/pretrain/pretrain_tpberta.py`. You can use online HuggingFace APIs by assigning the argument `--base_model_dir` with "FacebookAI/roberta-base".
+```
+Pretraining Example
+cd ~/tp-berta/scripts
+python clean_feat_names.py
+python pretrain/pretrain_tpberta.py --task "binclass" --batch_size 512 --max_epochs 30 --base_model_dir="FacebookAI/roberta-base"
+```
 
 ### Considerations for fine-tuning a TP-BERTa
 

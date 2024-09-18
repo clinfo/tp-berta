@@ -1,3 +1,4 @@
+# execusion dir = '~/tp-berta/scripts/'
 import os
 import json
 import shutil
@@ -9,7 +10,10 @@ import torch
 import sys
 sys.path.append(os.getcwd()) # to correctly import bin & lib
 
-from bin import build_default_model
+sys.path.append('../bin/')
+sys.path.append('../lib/')
+sys.path.append('../../tp-berta/') # add
+from tpberta_modeling import build_default_model # modified
 from lib import DataConfig, MTLoader, Regulator, prepare_tpberta_loaders, magnitude_regloss
 
 

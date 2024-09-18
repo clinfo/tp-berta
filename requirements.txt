@@ -12,8 +12,14 @@ torch==1.9.0+cu111
 transformers==4.18.0
 wandb==0.15.8
 einops==0.7.0
-nirvana_dl==66.0.3
+# nirvana_dl==66.0.3
 rtdl==0.0.13 # FT-Transformer
 # pytorch_tabnet==4.1.0 # TabNet
 # transtab==0.0.5 # TransTab
 # autogluon==1.0.0 # XTab
+pandas
+scikit-learn
+tqdm
+category_encoders
+tomli
+tomli_w
